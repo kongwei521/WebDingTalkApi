@@ -1,3 +1,6 @@
+TopSDK.dll 下载网址https://open-doc.dingtalk.com/doc/sdk.htm?spm=a219a.7629140.0.0.mItbfA&treeId=177&articleId=104963&docType=1 
+选择 .Net版本TOP接入SDK  下载后改扩展名为zip  rar然后解压然后得到dll 在项目中引用
+
 config配置：
  <appSettings>
      <!--应用ID的名义发送消息-->
@@ -10,16 +13,7 @@ config配置：
   </appSettings>
   发送消息方法:
  
-    #region 钉钉发送消息通config配置：
- <appSettings>
-     <!--应用ID的名义发送消息-->
-    <add key="AgentID" value="126463348"/>
-    <!--消息接收者的部门id-->
-    <add key="DeptID" value="254203329"/>
-    <!--钉钉中公司ID及密匙-->
-    <add key="CorpID" value="dingbxxxxxb3c"/>
-    <add key="CorpSecret" value="cxxxxxxxxxxxxxx1IQfF3JKBcCi"/>
-  </appSettings>知
+    #region 钉钉发送消息通知
         /// <summary>  
         /// 企业通知消息接口发送消息  https://open-doc.dingtalk.com/docs/doc.htm?spm=a219a.7629140.0.0.dWrFg3&treeId=172&articleId=104973&docType=1  可用此方法
         /// </summary>  
