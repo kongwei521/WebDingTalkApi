@@ -228,43 +228,7 @@ config配置：
                 }
             }
         }
-        /// <summary>
-        /// 获取是否有钉钉审批权限
-        /// </summary>
-        /// <param name="dingTalkID"></param>
-        /// <returns></returns>
-        public static char? GetIfDingtalkAgreeStatus(string dingTalkID)
-        {
-            char? result='N';
-            using (WHSMDataContext db = new WHSMDataContext())
-            {
-                var getApproveInfo = db.Base_SuperAdmin.SingleOrDefault(x => x.dingtalkid.Equals(dingTalkID) && x.ifdisable == 'N');
-                if (getApproveInfo != null)
-                {
-                    result = getApproveInfo.ifdingtalkagree;
-                }
-            }
-            return result;
-        }
-
-        /// <summary>
-        /// 获取下一步或者退回人的姓名
-        /// </summary>
-        /// <param name="dingTalkID"></param>
-        /// <returns></returns>
-        public static string GetBackNextApproveTureName(string dingTalkID)
-        {
-           var  result =string.Empty;
-            using (WHSMDataContext db = new WHSMDataContext())
-            {
-                var getApproveInfo = db.Base_SuperAdmin.SingleOrDefault(x => x.dingtalkid.Equals(dingTalkID) && x.ifdisable == 'N');
-                if (getApproveInfo != null)
-                {
-                    result = getApproveInfo.truename;
-                }
-            }
-            return result;
-        }
+      
         #region //OA 发送消息内容类
         public class oa
         {
@@ -309,9 +273,9 @@ config配置：
    var sendMessageAlert = "您的" + typeName + ":【" + approveTitle + "】已被【" + trueName + "】审批通过。";
    ShareApplyClass.AsyncSendDingTalkTextMessage(regDingTalkID,  sendMessageAlert,trueName);
    
-	 AsyncSendDingTalkOAMessage 调用：
+ AsyncSendDingTalkOAMessage 调用：
 	 
-   var handlerType = ((Button)sender).CommandArgument == "5" ? "已成功退回给【" + drpBackApprovePeople.SelectedItem.Text + "】,等待重新处理后再次审批。" : "正在等待【" + drpApprovePeople.SelectedItem.Text + "】审批,如紧急或等待时间过长,您可点击催办进行催促当前办理人进行审批。";
+  var handlerType = ((Button)sender).CommandArgument == "5" ? "已成功退回给【" + drpBackApprovePeople.SelectedItem.Text + "】,等待重新处理后再次审批。" : "正在等待【" + drpApprovePeople.SelectedItem.Text + "】审批,如紧急或等待时间过长,您可点击催办进行催促当前办理人进行审批。";
 var sendMessageAlert = "【" + txtApproveTtile.Value + "】" + handlerType;
 var agreeCode = ((Button)sender).CommandArgument == "5" ? drpBackApprovePeople.SelectedValue : drpApprovePeople.SelectedValue;
 ShareApplyClass.AsyncSendDingTalkOAMessage(Request["insertType"], Request["ApproveID"], agreeCode, ShareApplyClass.GetBackNextApproveTureName(agreeCode), Request["TrueName"]);
