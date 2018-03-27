@@ -2,6 +2,7 @@
 本文首先感谢原作者_学而时习之_博客地址是：https://blog.csdn.net/xxdddail/article/category/6776456 主要参考并整理完成此源码开源。 
 
 config配置：
+
  <appSettings>
      <!--应用ID的名义发送消息-->
     <add key="AgentID" value="126463348"/>
@@ -267,9 +268,9 @@ config配置：
         #endregion
 
         #endregion
-        
-  调用示例：
-	AsyncSendDingTalkTextMessage 调用：
+	 
+调用示例：
+AsyncSendDingTalkTextMessage 调用：
    var sendMessageAlert = "您的" + typeName + ":【" + approveTitle + "】已被【" + trueName + "】审批通过。";
    ShareApplyClass.AsyncSendDingTalkTextMessage(regDingTalkID,  sendMessageAlert,trueName);
    
@@ -279,4 +280,6 @@ config配置：
 var sendMessageAlert = "【" + txtApproveTtile.Value + "】" + handlerType;
 var agreeCode = ((Button)sender).CommandArgument == "5" ? drpBackApprovePeople.SelectedValue : drpApprovePeople.SelectedValue;
 ShareApplyClass.AsyncSendDingTalkOAMessage(Request["insertType"], Request["ApproveID"], agreeCode, ShareApplyClass.GetBackNextApproveTureName(agreeCode), Request["TrueName"]);
+        
+ 
               
