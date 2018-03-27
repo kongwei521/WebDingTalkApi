@@ -166,9 +166,6 @@ config配置：
                     }
                     else
                     {
-//                        SELECT a.*from ApprovePlanOrder_Details a INNER JOIN(
-//SELECT b.approveID from ApprovePlanOrder_Header a INNER JOIN(SELECT approveID, CgCostsID from ApprovePlanOrder_Header)
-//b on a.approveID = b.CgCostsID where a.approveID = '77634e39-25aa-4cec-8688-5f17c41fb56d')b on a.approveID = b.approveID
                         lstApproveDetails  = (from a in db.ApprovePlanOrder_Details
                                               join b in (
                                                   (from a0 in db.ApprovePlanOrder_Header
@@ -308,11 +305,14 @@ config配置：
         #endregion
         
   调用示例：
+	AsyncSendDingTalkTextMessage 调用：
    var sendMessageAlert = "您的" + typeName + ":【" + approveTitle + "】已被【" + trueName + "】审批通过。";
    ShareApplyClass.AsyncSendDingTalkTextMessage(regDingTalkID,  sendMessageAlert,trueName);
    
+	 AsyncSendDingTalkOAMessage 调用：
+	 
    var handlerType = ((Button)sender).CommandArgument == "5" ? "已成功退回给【" + drpBackApprovePeople.SelectedItem.Text + "】,等待重新处理后再次审批。" : "正在等待【" + drpApprovePeople.SelectedItem.Text + "】审批,如紧急或等待时间过长,您可点击催办进行催促当前办理人进行审批。";
-                        var sendMessageAlert = "【" + txtApproveTtile.Value + "】" + handlerType;
-                        var agreeCode = ((Button)sender).CommandArgument == "5" ? drpBackApprovePeople.SelectedValue : drpApprovePeople.SelectedValue;
+var sendMessageAlert = "【" + txtApproveTtile.Value + "】" + handlerType;
+var agreeCode = ((Button)sender).CommandArgument == "5" ? drpBackApprovePeople.SelectedValue : drpApprovePeople.SelectedValue;
 ShareApplyClass.AsyncSendDingTalkOAMessage(Request["insertType"], Request["ApproveID"], agreeCode, ShareApplyClass.GetBackNextApproveTureName(agreeCode), Request["TrueName"]);
               
