@@ -1,7 +1,16 @@
 钉钉配置及进行调用TopSDK.dll 进行异步发送消息功能。 
 本文首先感谢原作者_学而时习之_博客地址是：https://blog.csdn.net/xxdddail/article/category/6776456 
 主要参考并整理并完成此源码。 
-
+config配置：
+ <appSettings>
+     <!--应用ID的名义发送消息-->
+    <add key="AgentID" value="126463348"/>
+    <!--消息接收者的部门id-->
+    <add key="DeptID" value="254203329"/>
+    <!--钉钉中公司ID及密匙-->
+    <add key="CorpID" value="dingbxxxxxb3c"/>
+    <add key="CorpSecret" value="cxxxxxxxxxxxxxx1IQfF3JKBcCi"/>
+  </appSettings>
   发送消息方法:
   
     #region 钉钉发送消息通知
